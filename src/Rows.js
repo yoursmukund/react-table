@@ -46,15 +46,26 @@ export default class Rows extends Component {
         }
     }
 
-    cell(key, row, header) {
+    cell(key, row) {
         return (
             <div
-                onClick={() => { header ? this.sort(key, this.state.ascSortOrder): '' }}
+                key={key}
+                className="cell"
+                style={{ width: this.state.columnWidth }}>
+                {row[key]}
+            </div>
+        );
+    }
+
+    headerCell(key, row){
+        return (
+            <div
+                onClick={() => {this.sort(key, this.state.ascSortOrder)}}
                 key={key}
                 className="cell"
                 style={{ width: this.state.columnWidth }}>
                 <b>{row[key]}</b>
-                {header? this.showIcon(key) : null}
+                {this.showIcon(key)}
             </div>
         );
     }
@@ -89,7 +100,7 @@ export default class Rows extends Component {
                 }) : this.props.columns.map((row, index) => {
                     let tds = [];
                     for (let key in row) {
-                        tds.push(this.cell(key, row, true));
+                        tds.push(this.headerCell(key, row));
                     }
                     return <div className="row header" key={Math.random()}>{tds}</div>;
                 })}

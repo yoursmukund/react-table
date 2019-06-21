@@ -47,7 +47,7 @@ class App extends Component {
               <Rows columns={this.state.columns} callback={(columnName, ascSortOrder) => {this.sortCallback(columnName, ascSortOrder)}}/>
           </div>
           <div>
-            <Rows rows={this.state.rows} callback={(columnName, ascSortOrder) => { this.sortCallback(columnName, ascSortOrder) }}/>
+            <Rows rows={this.state.rows}/>
           </div>
         </div>
       </div>
