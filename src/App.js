@@ -19,14 +19,22 @@ class App extends Component {
     this.sortCallback = this.sortCallback.bind(this);
   }
 
-  sortCallback(columnName) {
+  sortCallback(columnName, ascOrder) {
     this.setState({
       rows: this.state.rows.sort((obj1, obj2) => {
+        if(ascOrder){
           if(obj1[columnName] < obj2[columnName]){
             return -1;
           } else{
             return 1;
           }
+        } else {
+          if(obj1[columnName] > obj2[columnName]){
+            return -1;
+          } else{
+            return 1;
+          }
+        }
         }),
     });
   }
@@ -36,10 +44,10 @@ class App extends Component {
       <div className="App">
         <div className="table">
           <div>
-              <Rows columns={this.state.columns} callback={(columnName) => {this.sortCallback(columnName)}}/>
+              <Rows columns={this.state.columns} callback={(columnName, ascSortOrder) => {this.sortCallback(columnName, ascSortOrder)}}/>
           </div>
           <div>
-            <Rows rows={this.state.rows} callback={(columnName) => { this.sortCallback(columnName) }}/>
+            <Rows rows={this.state.rows} callback={(columnName, ascSortOrder) => { this.sortCallback(columnName, ascSortOrder) }}/>
           </div>
         </div>
       </div>
