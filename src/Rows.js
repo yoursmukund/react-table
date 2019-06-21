@@ -48,25 +48,25 @@ export default class Rows extends Component {
 
     cell(key, row) {
         return (
-            <div
+            <td
                 key={key}
                 className="cell"
                 style={{ width: this.state.columnWidth }}>
                 {row[key]}
-            </div>
+            </td>
         );
     }
 
     headerCell(key, row){
         return (
-            <div
+            <td
                 onClick={() => {this.sort(key, this.state.ascSortOrder)}}
                 key={key}
                 className="cell"
                 style={{ width: this.state.columnWidth }}>
                 <b>{row[key]}</b>
                 {this.showIcon(key)}
-            </div>
+            </td>
         );
     }
 
@@ -90,21 +90,19 @@ export default class Rows extends Component {
 
     render() {
         return (
-            <div className="row-wrapper">
-                {this.props.rows ? this.props.rows.map((row, index) => {
+                this.props.rows ? this.props.rows.map((row, index) => {
                     let tds = [];
                     for (let key in row) {
                         tds.push(this.cell(key, row));
                     }
-                    return <div key={index} className="row" style={{ boxShadow: this.setHighlight(index) }} onMouseEnter={(e) => { this.highlight(e, index) }} onMouseLeave={() => { this.removeHighlight() }}>{tds}</div>;
+                    return <tr key={index} className="row" style={{ boxShadow: this.setHighlight(index) }} onMouseEnter={(e) => { this.highlight(e, index) }} onMouseLeave={() => { this.removeHighlight() }}>{tds}</tr>;
                 }) : this.props.columns.map((row, index) => {
                     let tds = [];
                     for (let key in row) {
                         tds.push(this.headerCell(key, row));
                     }
-                    return <div className="row header" key={Math.random()}>{tds}</div>;
-                })}
-            </div>
+                    return <tr className="row header" key={Math.random()}>{tds}</tr>;
+                })
         )
     }
 }

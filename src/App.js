@@ -8,13 +8,13 @@ class App extends Component {
     super(props);
     this.state = {
       defaultColor: 'white',
-      columns: [{fname: 'First Name', lname: 'Last Name'}],
+      columns: [{fname: 'Email', lname: 'Institute Name'}],
       rows: [
-      {fname:'Mukund',lname:'Sharma'}, 
-      {fname:'Prakrity',lname:'Dadhich'},
-      {fname:'Ila',lname:'Sharma'},
-      {fname:'Shekhar',lname:'Sharma'},
-      {fname:'Meenakshi',lname:'Sharma'}]
+      {fname:'ornare@accumsansed.edu',lname:'Aenean Institute'}, 
+      {fname:'sit@pharetranibhAliquam.casaasjkdhADHkadshkds',lname:'Mus Proin Vel Inc.'},
+      {fname:'eget.venenatis@nonummy.org',lname:'In Tempus Eu Industries'},
+      {fname:'libero.Proin.sed@magnaetipsum.org',lname:'Sem Associates'},
+      {fname:'nibh.Aliquam@atpretium.edu',lname:'Fringilla Institute'}]
     }
     this.sortCallback = this.sortCallback.bind(this);
   }
@@ -42,14 +42,14 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="table">
-          <div>
+        <table className="table">
+          <thead>
               <Rows columns={this.state.columns} callback={(columnName, ascSortOrder) => {this.sortCallback(columnName, ascSortOrder)}}/>
-          </div>
-          <div>
+          </thead>
+          <tbody>
             <Rows rows={this.state.rows}/>
-          </div>
-        </div>
+          </tbody>
+        </table>
       </div>
     );
   }
