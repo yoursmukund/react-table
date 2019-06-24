@@ -7,19 +7,12 @@ body {
 .table{
   border: 1px solid gray;
   border-collapse: collapse;
-  width: 50%;
   margin: 30px;
 }
 
 .cell{
   text-align: center;
   border: 1px solid gray;
-  width: 100%;
-}
-
-.row {
-  display: flex;
-  justify-content: space-evenly;
 }
 
 .header {

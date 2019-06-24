@@ -11,7 +11,7 @@ class App extends Component {
       columns: [{fname: 'Email', lname: 'Institute Name'}],
       rows: [
       {fname:'ornare@accumsansed.edu',lname:'Aenean Institute'}, 
-      {fname:'sit@pharetranibhAliquam.casaasjkdhADHkadshkds',lname:'Mus Proin Vel Inc.'},
+      {fname:'sit@pharetranibhAliq',lname:'Mus Proin Vel Inc.'},
       {fname:'eget.venenatis@nonummy.org',lname:'In Tempus Eu Industries'},
       {fname:'libero.Proin.sed@magnaetipsum.org',lname:'Sem Associates'},
       {fname:'nibh.Aliquam@atpretium.edu',lname:'Fringilla Institute'}]
@@ -42,7 +42,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <table className="table">
+        <table className="table" style={{width: 600}}>
           <thead>
               <Rows columns={this.state.columns} callback={(columnName, ascSortOrder) => {this.sortCallback(columnName, ascSortOrder)}}/>
           </thead>
