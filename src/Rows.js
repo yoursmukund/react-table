@@ -54,8 +54,8 @@ export default class Rows extends Component {
         return (
             <td
                 key={key}
-                className="cell"
-                style={{ width: this.state.columnWidth }}>
+                className="table-cell"
+            >
                 {row[key]}
             </td>
         );
@@ -67,24 +67,33 @@ export default class Rows extends Component {
         }
     }
 
+    setHeaderWidth(key) {
+        if (key === this.state.pressedColumn) {
+            return { width: this.state.columnWidth };
+        } else {
+            return { width: 'auto' };
+        }
+    }
+
     headerCell(key, row) {
         return (
             <th
                 onClick={() => { this.sort(key, this.state.ascSortOrder) }}
-                onMouseDown={(e) => { this.setState({ startX: e.pageX, pressed: true }) }}
+                onMouseDown={(e) => { this.setState({ startX: e.pageX, pressed: true, pressedColumn: key }) }}
                 onMouseMove={(e) => {
                     if (this.state.pressed) {
                         this.setState({ widthDelta: e.pageX - this.state.startX }, () => {
                             this.changeWidth();
-                        })
+                        });
                     }
                 }}
                 onMouseUp={() => {
                     this.setState({ pressed: false });
                 }}
                 key={key}
-                className="cell"
-                style={{ width: this.state.columnWidth }}>
+                className="header-cell"
+                style={this.setHeaderWidth(key)}
+            >
                 <b>{row[key]}</b>
                 {this.showIcon(key)}
             </th>

@@ -11,7 +11,7 @@ class App extends Component {
       defaultColor: 'white',
       columns: [{ fname: 'Email', lname: 'Institute Name' }],
       rows: [
-        { fname: 'ornare@accumsansed.edu', lname: 'Aenean Institute' },
+        { fname: 'ornare@accumsansed.edu', lname: 'Aenean InstitutesajdkhkasdhkAHSDKJHASKD' },
         { fname: 'sit@pharetranibhAliq', lname: 'Mus Proin Vel Inc.' },
         { fname: 'eget.venenatis@nonummy.org', lname: 'In Tempus Eu Industries' },
         { fname: 'libero.Proin.sed@magnaetipsum.org', lname: 'Sem Associates' },

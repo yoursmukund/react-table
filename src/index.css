@@ -12,9 +12,21 @@ body {
   border-radius: 0 0 3px 3px;
 }
 
-.cell{
+.header-cell{
   text-align: center;
   border: 1px solid gray;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.table-cell{
+  text-align: center;
+  border: 1px solid gray;
+  max-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .header {
