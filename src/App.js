@@ -46,7 +46,7 @@ class App extends Component {
         <div className="table-header" style={{ width: 598 }}>
           <div className="table-name"></div>
           <div className="table-name"><b>Employee Table</b></div>
-          <TableOptions options={{ fullScreen: false, filter: true, search: false }} />
+          <TableOptions options={{ fullScreen: true, filter: true, search: true }} />
         </div>
         <table className="table" style={{ width: 600 }}>
           <thead>

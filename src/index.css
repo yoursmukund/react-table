@@ -5,6 +5,8 @@ body {
   box-sizing: border-box;
 }
 
+/* Table styles */
+
 .table{
   border: 1px solid gray;
   border-collapse: collapse;
@@ -48,15 +50,17 @@ body {
   border-radius: 3px 3px 0 0;
 }
 
+.table-name{
+  width: 33%;
+}
+
+/* Table options */
+
 .table-options-wrapper{
   width: 33%;
   display: flex;
   justify-content: flex-end;
   align-items: center;
-}
-
-.table-name{
-  width: 33%;
 }
 
 .option-block{
