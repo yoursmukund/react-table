@@ -62,10 +62,8 @@ export default class Rows extends Component {
     }
 
     changeWidth() {
-        if(this.state.pressed){
-            this.setState({ columnWidth: this.state.startX + this.state.widthDelta }, () => {
-                console.log(this.state)
-            })
+        if (this.state.pressed) {
+            this.setState({ columnWidth: this.state.startX + this.state.widthDelta });
         }
     }
 
@@ -81,8 +79,8 @@ export default class Rows extends Component {
                         })
                     }
                 }}
-                onMouseUp={(e)=>{
-                    this.setState({pressed: false});
+                onMouseUp={() => {
+                    this.setState({ pressed: false });
                 }}
                 key={key}
                 className="cell"
