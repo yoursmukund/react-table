@@ -9,12 +9,15 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      width: 600,
       defaultColor: 'white',
       columns: data.columns,
-      rows: data.rows
+      rows: data.rows,
+      expanded: false
     }
     this.sortCallback = this.sortCallback.bind(this);
     this.searchCallBack = this.searchCallBack.bind(this);
+    this.fullScreenCallback = this.fullScreenCallback.bind(this);
   }
 
   sortCallback(columnName, ascOrder) {
@@ -49,15 +52,23 @@ class App extends Component {
     this.setState({rows: filteredRows});
   }
 
+  fullScreenCallback(){
+    if(this.state.expanded){
+      this.setState({width: 600, expanded: false});
+    } else {
+      this.setState({width: document.body.offsetWidth-10, expanded: true});
+    }
+  }
+
   render() {
     return (
       <div className="wrapper">
-        <div className="table-header" style={{ width: 598 }}>
+        <div className="table-header" style={{ width: this.state.width-2 }}>
           <div className="table-name"></div>
           <div className="table-name"><b>Employee Table</b></div>
-          <TableOptions options={{ fullScreen: true, filter: true, search: true, searchCallback: this.searchCallBack }}/>
+          <TableOptions options={{ fullScreen: true, filter: true, search: true, searchCallback: this.searchCallBack, fullScreenCallback: this.fullScreenCallback }}/>
         </div>
-        <table className="table" style={{ width: 600 }}>
+        <table className="table" style={{ width: this.state.width }}>
           <thead>
             <Rows columns={this.state.columns} callback={(columnName, ascSortOrder) => { this.sortCallback(columnName, ascSortOrder) }} />
           </thead>

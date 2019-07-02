@@ -73,10 +73,12 @@ body {
   align-items: center;
   margin: 1px;
   border-radius: 3px;
+  background-color: white;
+  font-size: 13px;
 }
 
 .search-box{
   margin-right: 2px;
   padding: 2px;
-  width: 150px;
+  width: 120px;
 }

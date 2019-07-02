@@ -15,7 +15,7 @@ class TableOptions extends Component {
     }
 
     render() {
-        let { fullScreen, filter, search, searchCallback } = this.props.options;
+        let { fullScreen, fullScreenCallback, filter, search, searchCallback } = this.props.options;
         return (
             <div className="table-options-wrapper">
                 {(search && !this.state.openSearchBox) ?
@@ -34,12 +34,17 @@ class TableOptions extends Component {
                         placeholder="Search" 
                         onChange={(e) => {searchCallback(e.target.value)}}/>
                     </div> : ''}
-                {fullScreen ? <div className="option-block">
-                    <i className="fas fa-expand"></i>
-                </div> : ''}
-                {filter ? <div className="option-block">
-                    <i className="fas fa-filter"></i>
-                </div> : ''}
+                {fullScreen ? 
+                    <div 
+                        className="option-block"
+                        onClick={() => {fullScreenCallback()}}
+                    >
+                        <i className="fas fa-expand"></i>
+                    </div> : ''}
+                {filter ? 
+                    <div className="option-block">
+                        <i className="fas fa-filter"></i>
+                    </div> : ''}
             </div>
         )
     }
