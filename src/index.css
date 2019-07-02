@@ -74,3 +74,9 @@ body {
   margin: 1px;
   border-radius: 3px;
 }
+
+.search-box{
+  margin-right: 2px;
+  padding: 2px;
+  width: 150px;
+}

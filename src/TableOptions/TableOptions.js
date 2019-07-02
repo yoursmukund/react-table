@@ -15,7 +15,7 @@ class TableOptions extends Component {
     }
 
     render() {
-        let { fullScreen, filter, search } = this.props.options;
+        let { fullScreen, filter, search, searchCallback } = this.props.options;
         return (
             <div className="table-options-wrapper">
                 {(search && !this.state.openSearchBox) ?
@@ -27,7 +27,12 @@ class TableOptions extends Component {
                     </div> : ''}
                 {this.state.openSearchBox ?
                     <div>
-                        <input onBlur={() => { this.openSearchBox() }} autoFocus placeholder="Search"/>
+                        <input 
+                        className="search-box" 
+                        onBlur={() => { this.openSearchBox() }} 
+                        autoFocus 
+                        placeholder="Search" 
+                        onChange={(e) => {searchCallback(e.target.value)}}/>
                     </div> : ''}
                 {fullScreen ? <div className="option-block">
                     <i className="fas fa-expand"></i>
