@@ -18,6 +18,7 @@ class App extends Component {
     this.sortCallback = this.sortCallback.bind(this);
     this.searchCallBack = this.searchCallBack.bind(this);
     this.fullScreenCallback = this.fullScreenCallback.bind(this);
+    this.filterCallback = this.filterCallback.bind(this);
   }
 
   sortCallback(columnName, ascOrder) {
@@ -40,40 +41,57 @@ class App extends Component {
     });
   }
 
-  searchCallBack(searchString){
+  searchCallBack(searchString) {
     let rows = data.rows;
     let filteredRows = rows.filter((row) => {
-      for(let index in row){
-        if(row[index].indexOf(searchString)!==-1){
+      for (let index in row) {
+        if (row[index].indexOf(searchString) !== -1) {
           return row;
         }
       }
     });
-    this.setState({rows: filteredRows});
+    this.setState({ rows: filteredRows });
   }
 
-  fullScreenCallback(){
-    if(this.state.expanded){
-      this.setState({width: 600, expanded: false});
+  fullScreenCallback() {
+    if (this.state.expanded) {
+      this.setState({ width: 600, expanded: false });
     } else {
-      this.setState({width: document.body.offsetWidth-10, expanded: true});
+      this.setState({ width: document.body.offsetWidth - 10, expanded: true });
     }
+  }
+
+  filterCallback(unchecked) {
+    let {columns} = this.state;
+    unchecked.forEach((uncheckedItem) => {
+      if(columns[0].hasOwnProperty(uncheckedItem)){
+        columns[0][uncheckedItem] = null;
+      }
+    });
+    this.setState({columns});
   }
 
   render() {
     return (
       <div className="wrapper">
-        <div className="table-header" style={{ width: this.state.width-2 }}>
+        <div className="table-header" style={{ width: this.state.width - 2 }}>
           <div className="table-name"></div>
           <div className="table-name"><b>Employee Table</b></div>
-          <TableOptions options={{ fullScreen: true, filter: true, search: true, searchCallback: this.searchCallBack, fullScreenCallback: this.fullScreenCallback }}/>
+          <TableOptions options={{
+            fullScreen: true,
+            filter: true,
+            search: true,
+            filterCallback: this.filterCallback,
+            searchCallback: this.searchCallBack,
+            fullScreenCallback: this.fullScreenCallback
+          }} />
         </div>
         <table className="table" style={{ width: this.state.width }}>
           <thead>
             <Rows columns={this.state.columns} callback={(columnName, ascSortOrder) => { this.sortCallback(columnName, ascSortOrder) }} />
           </thead>
           <tbody>
-            <Rows rows={this.state.rows} />
+            <Rows columns={this.state.columns} rows={this.state.rows} />
           </tbody>
         </table>
       </div>

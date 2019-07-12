@@ -119,13 +119,23 @@ export default class Rows extends Component {
     }
 
     render() {
+        let columns = this.props.columns[0];
         return (
             this.props.rows ? this.props.rows.map((row, index) => {
                 let tds = [];
                 for (let key in row) {
-                    tds.push(this.cell(key, row));
+                    if(columns.hasOwnProperty(key) === true){
+                        tds.push(this.cell(key, row));
+                    }
                 }
-                return <tr key={index} className="row" style={{ boxShadow: this.setHighlight(index) }} onMouseEnter={(e) => { this.highlight(e, index) }} onMouseLeave={() => { this.removeHighlight() }}>{tds}</tr>;
+                return <tr
+                    key={index}
+                    className="row"
+                    style={{ boxShadow: this.setHighlight(index) }}
+                    onMouseEnter={(e) => { this.highlight(e, index) }}
+                    onMouseLeave={() => { this.removeHighlight() }}>
+                    {tds}
+                </tr>;
             }) : this.props.columns.map((row, index) => {
                 let tds = [];
                 for (let key in row) {

@@ -61,6 +61,7 @@ body {
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  position: relative;
 }
 
 .option-block{
@@ -81,4 +82,42 @@ body {
   margin-right: 2px;
   padding: 2px;
   width: 120px;
+}
+
+.filter-box{
+  background: #eee;
+  width: 100px;
+  height: 100px;
+  border: 1px solid gray;
+  border-radius: 3px;
+  display: flex;
+  z-index: 20;
+  position: absolute;
+  top: 29px;
+}
+
+.columnList{
+  min-height: 100px;
+  height: auto;
+  width: 100px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 6px -6px #777;
+}
+
+.filter-item-name{
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.flex{
+  display: flex;
+}
+
+.filter-item-wrapper{
+  width: 100px;
+  height: 20px;
+  display: flex;
 }
