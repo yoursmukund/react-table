@@ -62,10 +62,10 @@ class App extends Component {
   }
 
   filterCallback(unchecked) {
-    let {columns} = this.state;
+    let columns = data.columns.slice();
     unchecked.forEach((uncheckedItem) => {
       if(columns[0].hasOwnProperty(uncheckedItem)){
-        columns[0][uncheckedItem] = null;
+        delete columns[0][uncheckedItem];
       }
     });
     this.setState({columns});
